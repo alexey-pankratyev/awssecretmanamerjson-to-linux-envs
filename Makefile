@@ -12,7 +12,7 @@ export HELP_MESSAGE
 
 # Define project version to be used in CI/CD pipelines
 PROJECT_NAME              ?= make-envs
-PROJECT_VERSION           ?= 0.4.0
+PROJECT_VERSION           ?= 0.1.0
 PROJECT_BRANCH            ?= $(shell git branch --show-current | tr / _)
 PROJECT_COMMIT_HASH       ?= $(shell git rev-parse HEAD)
 PROJECT_COMMIT_HASH_SHORT ?= $(shell echo $(PROJECT_COMMIT_HASH) | cut -c 1-7)
@@ -20,7 +20,7 @@ BUILD_ID                  ?= local
 
 # Global parameters for Docker image publishing
 AWS_REGION ?= eu-west-1
-DOCKER_REGISTRY_REPO ?= 630104266194.dkr.ecr.eu-west-1.amazonaws.com
+DOCKER_REGISTRY_REPO ?= "here_you_docker_registry"
 
 # Parameters to be used in a Docker tag
 # Format example: 0.1.0.master.abc123.b0
@@ -77,9 +77,4 @@ clean:
 	@rm -rf container.sh
 	@echo ""
 
-set_teamcity_parameters:
-	@echo "*** Setting the image version in TeamCity parameters... ***"
-	@echo "##teamcity[setParameter name='env.BASE_CONTAINER_TAG' value='$(BASE_CONTAINER_TAG)']"
-	@echo ""
-
-.PHONY: default build_files_layout docker_build docker_publish set_teamcity_parameters clean
+.PHONY: default build_files_layout docker_build docker_publish clean
