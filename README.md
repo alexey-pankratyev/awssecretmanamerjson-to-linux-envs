@@ -1,0 +1,1 @@
+# awssecretmanamerjson-to-linux-envs
