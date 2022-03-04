@@ -16,4 +16,3 @@ This is a simple Rust script that generates a script file from the Aws Secret Ma
 ```bash
     make_envs  ~/Templates/aws_secrets.json  ~/Templates/env_secrets_export.sh
 ```
-
